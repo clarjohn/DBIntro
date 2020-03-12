@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 7034);
+app.set('port', 7808);
 
 app.get('/',function(req,res){
   res.render('home');

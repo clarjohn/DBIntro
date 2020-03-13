@@ -86,7 +86,7 @@ app.get('/reset-table',function(req,res,next){
         return;
       }
       context.results = JSON.stringify(rows);
-      return context;
+      res.send(context);
     });
   });
 

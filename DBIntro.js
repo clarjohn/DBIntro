@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
-
+app.use(express.static('public'));
 
 var mysql = require('mysql');
 var pool = mysql.createPool({

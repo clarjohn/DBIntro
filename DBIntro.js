@@ -7,10 +7,10 @@ var bodyParser = require('body-parser');
 
 var mysql = require('mysql');
 var pool = mysql.createPool({
-  host  : 'localhost',
-  user  : 'student',
-  password: 'default',
-  database: 'student'
+  host  : 'classmysql.engr.oregonstate.edu',
+  user  : 'cs290_clarjohn',
+  password: '4049',
+  database: 'cs290_clarjohn'
 });
 
 app.engine('handlebars', handlebars.engine);
@@ -56,14 +56,7 @@ app.get('/reset-table',function(req,res,next){
       "weight VARCHAR(255),"+
       "date VARCHAR(255),"+
       "lbs BOOLEAN)";
-      
-      pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`) VALUES ('none','0',20,1/19/2020)", function(err, result){
-        if(err){
-          next(err);
-          return;
-        }
-      });
-
+      res.render('home');   
     });
   });
 

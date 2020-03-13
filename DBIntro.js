@@ -27,7 +27,7 @@ app.get('/',function(req,res){
 
 app.get('/reset-table',function(req,res,next){
     var context = {};
-    pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
+    pool.query("DROP TABLE IF EXISTS workouts", function(err){ 
       var createString = "CREATE TABLE workouts("+
       "id INT PRIMARY KEY AUTO_INCREMENT,"+
       "name VARCHAR(255) NOT NULL,"+

@@ -25,7 +25,7 @@ app.set('port', 7808);
 /*Routes*/
 app.get('/',function(req,res,next){
     var context = {};
-   if(!req.session.name){
+  // if(!req.session.name){
     console.log("home rendered");
        pool.query('SELECT * FROM workouts', function(err, rows, fields){
         if(err){
@@ -35,7 +35,9 @@ app.get('/',function(req,res,next){
         context.results = JSON.stringify(rows);
         context.exc = JSON.stringify(rows);
         res.render('home', context);
-        return;
+      /*
+      
+      return;
        });
     }else{
         console.log("home was not rendered");
@@ -49,11 +51,15 @@ app.get('/',function(req,res,next){
         });
         return;
     }
+    */
   });
 
 
   
 app.post('/', function(req,res){
+
+     console.log(req.body);
+
     mysql.pool.query("INSERT INTO workouts(`name`,`reps`,`weight`,`date`) VALUES (?)", [req.body.name, req.body.reps, req.body.weight, req.body.date], function(err, result){
         if(err){
           next(err);

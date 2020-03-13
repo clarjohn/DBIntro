@@ -23,7 +23,6 @@ function loadTable(){
        
 }
 
-
 function showtable(tabDat) {
     let table = document.getElementById("dt")
     for (let element of tabDat) {
@@ -36,3 +35,25 @@ function showtable(tabDat) {
     }
   }
 
+function addExc(){
+    document.getElementById('Load_ID').addEventListener('click', function(event){
+        var request2 = new XMLHttpRequest();
+        var payload = {input:null}
+        payload.name = document.getElementById('name_input').value;
+        payload.name = document.getElementById('reps_input').value;
+        payload.name = document.getElementById('weight_input').value;
+        payload.name = document.getElementById('date_input').value;
+
+        request2.open('post', 'http://flip3.engr.oregonstate.edu:7808/', true);
+        request2.setRequestHeader('Content-Type', 'application/json');
+        request2.addEventListener('load',function(){
+          if(request2.status >= 200 && request2.status < 400){
+            var response2 = JSON.parse(request2.responseText);
+            console.log(response2); 
+          } else {
+            console.log("Error in network request: " + request2.statusText);
+          }});
+          request2.send(JSON.stringify(payload));
+          event.preventDefault();
+    });
+}

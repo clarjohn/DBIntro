@@ -35,10 +35,10 @@ app.get('/',function(req,res,next){
         context.results = JSON.stringify(rows);
         context.exc = JSON.stringify(rows);
         res.render('home', context);
-      /*
       
-      return;
-       });
+      
+      //return;
+       });/*
     }else{
         console.log("home was not rendered");
         pool.query('SELECT * FROM workouts', function(err, rows, fields){
@@ -55,7 +55,7 @@ app.get('/',function(req,res,next){
   });
 
 
-  
+ 
 app.post('/', function(req,res){
 
      console.log(req.body);

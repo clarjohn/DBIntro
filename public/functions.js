@@ -17,5 +17,6 @@ function loadTable(){
         } else {
           console.log("Error: " + request.statusText);
         }});
-
+        request.send(null);
+       
 }

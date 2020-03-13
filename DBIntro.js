@@ -57,23 +57,13 @@ app.get('/reset-table',function(req,res,next){
       "date VARCHAR(255),"+
       "lbs BOOLEAN)";
       
-      pool.query("INSERT INTO todo (`name`,`reps`,`weight`,`date`) VALUES ('none','0',20,1/19/2020)", function(err, result){
+      pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`) VALUES ('none','0',20,1/19/2020)", function(err, result){
         if(err){
           next(err);
           return;
         }
       });
 
-
-
-      pool.query('SELECT * FROM workouts', function(err, rows, fields){
-        if(err){
-          next(err);
-          return;
-        }
-        context.results = JSON.stringify(rows);
-        res.render('home', context);
-      });
     });
   });
 

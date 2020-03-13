@@ -29,7 +29,7 @@ app.get('/',function(req,res,next){
       }
       context.results = JSON.stringify(rows);
       context.exc = JSON.stringify(rows);
-      console.log('Home page rendered');
+      
       res.render('home', context);
     });
   });

@@ -11,9 +11,11 @@ function loadTable(){
    
     request.addEventListener('load',function(){
         if(request.status >= 200 && request.status < 400){
-          console.log("We got data back"); 
+        
           var response = JSON.parse(request.responseText);
+          console.log(response);
           document.getElementById('test').textContent = response;
+
         } else {
           console.log("Error: " + request.statusText);
         }});

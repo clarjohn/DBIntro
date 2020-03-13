@@ -4,6 +4,9 @@ var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
 app.use(express.static('public'));
+var session = require('express-session');
+app.use(session({secret:'SuperSecretPassword'}));
+
 
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -22,16 +25,30 @@ app.set('port', 7808);
 /*Routes*/
 app.get('/',function(req,res,next){
     var context = {};
-    pool.query('SELECT * FROM workouts', function(err, rows, fields){
-      if(err){
-        next(err);
+   if(!req.session.name){
+    console.log("home rendered");
+       pool.query('SELECT * FROM workouts', function(err, rows, fields){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = JSON.stringify(rows);
+        context.exc = JSON.stringify(rows);
+        res.render('home', context);
         return;
-      }
-      context.results = JSON.stringify(rows);
-      context.exc = JSON.stringify(rows);
-      
-      res.render('home', context);
-    });
+       });
+    }else{
+        console.log("home was not rendered");
+        pool.query('SELECT * FROM workouts', function(err, rows, fields){
+          if(err){
+            next(err);
+            return;
+          }
+          context.results = JSON.stringify(rows);
+          res.send(context);
+        });
+        return;
+    }
   });
 
 

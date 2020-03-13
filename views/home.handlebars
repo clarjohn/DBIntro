@@ -1,16 +1,24 @@
 <h1>Enter your exercise here</h1>
 <form action="/" method="post">
-    <lable size = "30" maxlenght = "100">Name:
-    <lable size = "30" maxlenght = "100">Reps:
-    <lable size = "30" maxlenght = "100">Weight:
-    <lable size = "30" maxlenght = "100">Date:    
+    <div style="float:left;margin-right:20px;">
+    <lable>Name:</lable><br/>
+        <input type="text" name = "name" size = "30" maxlenght = "100">    
+    </div>
+    <div style="float:left;margin-right:20px;">
+        <lable>Reps:</lable><br/>
+        <input type="text" name = "reps" size = "30" maxlenght = "100">    
+    </div>
+    <div style="float:left;margin-right:20px;">
+        <lable>Weight:</lable><br/>
+        <input type="number" name = "weight" size = "30" maxlenght = "100">
+    </div>
+    <div style="float:left;margin-right:20px;">
+        <lable>Date:</lable><br/>
+        <input type="date" name = "date" size = "30" maxlenght = "100">
+    </div>   
     <br/>
-    <input type="text" name = "name" size = "30" maxlenght = "100">
-    <input type="text" name = "reps" size = "30" maxlenght = "100">
-    <input type="number" name = "weight" size = "30" maxlenght = "100">
-    <input type="date" name = "date" size = "30" maxlenght = "100">
-	<input type="submit" name="command" value="enter">
-    <br/>
+    <input type="submit" name="command" value="enter">
+    
 </form>
 
 <h1>Exercise list</h1>
@@ -30,3 +38,7 @@
 
 
 </table>
+
+
+<h1>Testing</h1>
+<p>{{results}}</p>

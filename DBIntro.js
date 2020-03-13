@@ -21,8 +21,29 @@ app.set('port', 7808);
 
 /*Routes*/
 app.get('/',function(req,res){
-    res.render('home');
+    var context = {};
+    pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.results = JSON.stringify(rows);
+      res.render('home', context);
+    });
   });
+
+
+  
+app.post('/', function(req,res){
+    mysql.pool.query("INSERT INTO workouts(`name`,`reps`,`weight`,`date`) VALUES (?)", [req.body.name, req.body.reps, req.body.weight, req.body.date], function(err, result){
+        if(err){
+          next(err);
+          return;
+        } 
+    res.render('home');
+    });
+  });
+
 
 
 app.get('/reset-table',function(req,res,next){
@@ -31,14 +52,28 @@ app.get('/reset-table',function(req,res,next){
       var createString = "CREATE TABLE workouts("+
       "id INT PRIMARY KEY AUTO_INCREMENT,"+
       "name VARCHAR(255) NOT NULL,"+
-      "reps INT,"+
-      "weight INT,"+
-      "date DATE,"+
+      "reps VARCHAR(255),"+
+      "weight VARCHAR(255),"+
+      "date VARCHAR(255),"+
       "lbs BOOLEAN)";
-      pool.query(createString, function(err){
-        context.results = "Table reset";
-        res.render('home',context);
-      })
+      
+      pool.query("INSERT INTO todo (`name`,`reps`,`weight`,`date`) VALUES ('none','0',20,1/19/2020)", function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+      });
+
+
+
+      pool.query('SELECT * FROM workouts', function(err, rows, fields){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = JSON.stringify(rows);
+        res.render('home', context);
+      });
     });
   });
 

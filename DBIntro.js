@@ -77,6 +77,17 @@ app.get('/reset-table',function(req,res,next){
   });
 
 
+  app.get('/test',function(req,res,next){
+    var context = {};
+    pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.results = JSON.stringify(rows);
+      return context;
+  });
+
   /*boiler plate */
 app.use(function(req,res){
   res.status(404);

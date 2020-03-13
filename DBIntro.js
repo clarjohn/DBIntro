@@ -79,7 +79,7 @@ app.get('/reset-table',function(req,res,next){
 
   app.get('/test',function(req,res,next){
     var context = {};
-   
+    console.log("This was called");
     pool.query('SELECT * FROM workouts', function(err, rows, fields){
       if(err){
         next(err);

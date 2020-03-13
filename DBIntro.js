@@ -21,16 +21,8 @@ app.set('port', 7808);
 
 /*Routes*/
 app.get('/',function(req,res){
-    var context = {};
-    pool.query('SELECT * FROM workouts', function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-      context.results = JSON.stringify(rows);
-      res.render('home', context);
-    });
-  });
+    res.render('home');
+});
 
 
   
@@ -45,7 +37,7 @@ app.post('/', function(req,res){
   });
 
 
-
+/*test routes*/
 app.get('/reset-table',function(req,res,next){
     var context = {};
     pool.query("DROP TABLE IF EXISTS workouts", function(err){ 

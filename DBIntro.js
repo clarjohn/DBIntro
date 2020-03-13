@@ -48,7 +48,9 @@ app.get('/reset-table',function(req,res,next){
       "weight VARCHAR(255),"+
       "date VARCHAR(255),"+
       "lbs BOOLEAN)";
-      res.render('home');   
+      pool.query(createString, function(err){
+        context.results = "Table reset";
+        res.render('home',context);  
     });
   });
 

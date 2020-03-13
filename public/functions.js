@@ -14,7 +14,7 @@ function loadTable(){
         
           var response = JSON.parse(request.responseText);
           console.log(response);
-          document.getElementById('test').textContent = response;
+            showtable(response);
 
         } else {
           console.log("Error: " + request.statusText);
@@ -22,3 +22,17 @@ function loadTable(){
         request.send(null);
        
 }
+
+
+function showtable(tabDat) {
+    let table = document.getElementById("dt")
+    for (let element of tabDat) {
+      let row = table.insertRow();
+      for (key in element) {
+        let cell = row.insertCell();
+        let text = document.createTextNode(element[key]);
+        cell.appendChild(text);
+      }
+    }
+  }
+

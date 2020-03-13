@@ -52,7 +52,20 @@ app.get('/reset-table',function(req,res,next){
     });
   });
 
+  app.get('/insert',function(req,res,next){
+    var context = {};
+    mysql.pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.query.c], function(err, result){
+      if(err){
+        next(err);
+        return;
+      }
+      context.results = "Inserted id " + result.insertId;
+      res.render('home',context);
+    });
+  });
 
+
+  /*boiler plate */
 app.use(function(req,res){
   res.status(404);
   res.render('404');

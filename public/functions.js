@@ -4,7 +4,6 @@
 
 function addExc(){
     document.getElementById('Load_ID').addEventListener('click', function(event){
-        event.preventDefault();
         var request2 = new XMLHttpRequest();
         var payload = {input:null}
         payload.name = document.getElementById('name_input').value;
@@ -25,5 +24,6 @@ function addExc(){
           console.log(payload);
           JSON.stringify(payload);
           request2.send(JSON.stringify(payload));
+          event.preventDefault();
     });
 }

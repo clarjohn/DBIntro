@@ -63,8 +63,8 @@ app.post('/', function(req,res,next){
               next(err);
               return;
             }
-            return JSON.stringify(rows);
-           // res.send(JSON.stringify(rows));
+           // return JSON.stringify(rows);
+            res.end(JSON.stringify(rows));
            });
       
     });

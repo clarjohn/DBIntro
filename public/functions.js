@@ -4,6 +4,7 @@
 
 function addExc(){
     document.getElementById('Load_ID').addEventListener('click', function(event){
+       /*
         var request2 = new XMLHttpRequest();
         var payload = {input:null}
         payload.name = document.getElementById('name_input').value;
@@ -13,7 +14,6 @@ function addExc(){
         console.log("Send Request");
         request2.open('post', 'http://flip3.engr.oregonstate.edu:7808/', true);
         request2.setRequestHeader('Content-Type', 'application/json');
-        
         request2.addEventListener('load',function(){
           if(request2.status >= 200 && request2.status < 400){
             //document.getElementById("test").textContent = "row was added";
@@ -27,7 +27,7 @@ function addExc(){
           request2.send(JSON.stringify(payload));
           event.preventDefault();
           event.stopPropagation();
-          
+         */ 
 
     });
 }

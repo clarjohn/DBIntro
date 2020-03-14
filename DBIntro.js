@@ -52,13 +52,12 @@ app.post('/', function(req,res){
      console.log(req.body);
      console.log(req.body.name);
      console.log("Post Entered");
- //   pool.query("INSERT INTO workouts(`name`,`reps`,`weight`,`date`) VALUES (?)", [req.body.name, req.body.reps, req.body.weight, req.body.date], function(err, result){
-  //      if(err){
-  //        next(err);
-  //        return;
-  //      } 
-  //res.render('home', context);
-  //  });
+    pool.query("INSERT INTO workouts(`name`,`reps`,`weight`,`date`) VALUES (?)", [req.body.name, req.body.reps, req.body.weight, req.body.date], function(err, result){
+        if(err){
+          next(err);
+          return;
+        } 
+    });
   });
 
 

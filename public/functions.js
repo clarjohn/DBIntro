@@ -25,5 +25,6 @@ function addExc(){
           JSON.stringify(payload);
           request2.send(JSON.stringify(payload));
           event.preventDefault();
+          event.stopPropagation();
     });
 }

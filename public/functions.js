@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', loadTable);
+//document.addEventListener('DOMContentLoaded', loadTable);
 
 
 

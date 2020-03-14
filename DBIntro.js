@@ -64,8 +64,8 @@ app.post('/', function(req,res,next){
               return;
             }
            // return JSON.stringify(rows);
-           // res.end(JSON.stringify(rows)); 
-           res.end("Dont Show"); 
+            res.end(JSON.stringify(rows)); 
+           
         });
       
     });

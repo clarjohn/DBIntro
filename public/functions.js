@@ -24,6 +24,6 @@ function addExc(){
           JSON.stringify(payload);
           request2.send(JSON.stringify(payload));
           document.getElementById("inpexc").reset();
-          event.preventDefault();
+         // event.preventDefault();
     });
 }

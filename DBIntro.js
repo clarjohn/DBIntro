@@ -1,9 +1,16 @@
 var express = require('express');
 
 var app = express();
+
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+
 var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
 app.use(express.static('public'));
+
 var session = require('express-session');
 app.use(session({secret:'SuperSecretPassword'}));
 
@@ -65,7 +72,7 @@ app.post('/', function(req,res){
   //        return;
   //      } 
   res.render('home', context);
-    });
+  //  });
   });
 
 

@@ -48,7 +48,7 @@ app.get('/',function(req,res,next){
 
 
  
-app.post('/', function(req,res){
+app.post('/', function(req,res,next){
      console.log(req.body);
      console.log(req.body.name);
      console.log("Post Entered");

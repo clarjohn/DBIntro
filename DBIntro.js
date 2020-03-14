@@ -64,8 +64,9 @@ app.post('/', function(req,res,next){
               return;
             }
            // return JSON.stringify(rows);
-            res.end(JSON.stringify(rows));
-           });
+          //  res.end(JSON.stringify(rows));
+          return; 
+        });
       
     });
   });

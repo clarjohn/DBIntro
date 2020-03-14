@@ -39,7 +39,6 @@ app.get('/',function(req,res,next){
           return;
         }
         context.results = JSON.stringify(rows);
-        context.exc = JSON.stringify(rows);
         res.render('home', context);
 
        });
@@ -57,6 +56,17 @@ app.post('/', function(req,res,next){
           next(err);
           return;
         } 
+        var context = {};
+        console.log("home rendered");
+           pool.query('SELECT * FROM workouts', function(err, rows, fields){
+            if(err){
+              next(err);
+              return;
+            }
+            //context.results = JSON.stringify(rows);
+            res.send(JSON.stringify(rows));
+           });
+        return;
     });
   });
 
@@ -78,20 +88,6 @@ app.get('/reset-table',function(req,res,next){
       }) 
     });
   });
-
-  app.get('/insert',function(req,res,next){
-    var context = {};
-    pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`) VALUES (?,?,?,?)", ['Mazie','100','90','2020'], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      context.results = "Inserted id " + result.insertId;
-      res.render('home',context);
-    });
-  });
-
-
 
 
   /*boiler plate */

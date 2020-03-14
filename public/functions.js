@@ -17,14 +17,13 @@ function addExc(){
           if(request2.status >= 200 && request2.status < 400){
             document.getElementById("test").textContent = "row was added";
             var response2 = JSON.parse(request2.responseText);
-            console.log(response2); 
+           // console.log(response2); 
           } else {
             console.log("Error in network request: " + request2.statusText);
           }});
           console.log(payload);
           JSON.stringify(payload);
-          request2.send(JSON.stringify(payload));
-          document.getElementById("inpexc").reset();
           event.preventDefault();
+          request2.send(JSON.stringify(payload));
     });
 }

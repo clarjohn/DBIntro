@@ -57,7 +57,6 @@ app.get('/',function(req,res,next){
 
  
 app.post('/', function(req,res){
-
      console.log(req.body);
      console.log("Post Entered");
     pool.query("INSERT INTO workouts(`name`,`reps`,`weight`,`date`) VALUES (?)", [req.body.name, req.body.reps, req.body.weight, req.body.date], function(err, result){
